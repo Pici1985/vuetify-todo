@@ -10,27 +10,40 @@
           v-bind="attrs"
           v-on="on"
         >
-          Add New Project
+          Add Project
         </v-btn>
       </template>
 
       <v-card>
-        <v-card-title class="text-h5 grey lighten-2">
-          Add new Project
+        <v-card-title>
+          <h2 class="primary--text p-5 ma-3">
+            Add New Project
+          </h2>
         </v-card-title>
 
         <v-card-text>
-            card text
+            <v-form class="px-3">
+              <v-text-field 
+                label="Title" 
+                v-model="title"
+                prepend-icon="folder"
+              ></v-text-field>
+              <v-textarea 
+                label="Information" 
+                v-model="content"
+                prepend-icon="edit"
+              ></v-textarea>    
+            </v-form>
         </v-card-text>
 
-        <v-divider></v-divider>
+        <!-- <v-divider></v-divider> -->
 
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="primary"
-            text
-            @click="dialog = false"
+            class="mb-5 mr-3"
+            color="primary"            
+            @click="dialog = false, submit()"
           >
             Create
           </v-btn>
@@ -44,9 +57,16 @@
 export default {
     data(){
         return{
-            dialog: false
+            dialog: false,
+            title: '',
+            content: '',
         }
-    }
+    },
+    methods: {
+      submit(){
+        console.log(this.title, this.content)
+      },
+    },
 }
 </script>
 
