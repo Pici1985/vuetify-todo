@@ -6,12 +6,11 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          color="grey lighten-2"
-          text
+          color="info"
           v-bind="attrs"
           v-on="on"
         >
-          Add Project
+          Add New Project
         </v-btn>
       </template>
 

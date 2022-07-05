@@ -62,7 +62,9 @@
                         The Net Ninja
                     </p>
                 </v-flex>
-                <Dialog />
+                <v-flex class="mt-4 mb-5">
+                    <Dialog />
+                </v-flex>
             </v-layout>
             <v-list>
                 <v-list-item 
