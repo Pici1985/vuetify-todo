@@ -7,7 +7,9 @@
                 <v-flex xs12 sm6 md4 lg3 v-for="person in team" :key="person.name">
                     <v-card class="text-center ma-3">
                         <v-responsive class="pt-4">
-                            image goes here
+                            <v-avatar size="100" class="grey lighten-2">
+                                <img :src="person.avatar" alt="avatar">
+                            </v-avatar>
                         </v-responsive>
                         <v-card-text>
                             <div class="subheading">
@@ -40,24 +42,29 @@ export default {
         return{
             team: [
                 { 
-                    name: 'Chun Li', 
-                    role: 'Web Developer'
+                    name: 'The Net Ninja', 
+                    role: 'Web Developer',
+                    avatar: '/avatar-1.png' 
                 },
                 { 
                     name: 'Ryu', 
-                    role: 'Graphic Designer'
+                    role: 'Graphic Designer',
+                    avatar: '/avatar-2.png' 
                 },
                 { 
-                    name: 'The Net Ninja', 
-                    role: 'Web Developer'
+                    name: 'Chun Li', 
+                    role: 'Web Developer',
+                    avatar: '/avatar-3.png' 
                 },
                 { 
                     name: 'Gouken', 
-                    role: 'Social Media Maverick'
+                    role: 'Social Media Maverick',
+                    avatar: '/avatar-4.png' 
                 },
                 { 
                     name: 'Yoshi', 
-                    role: 'Sales Guru'
+                    role: 'Sales Guru',
+                    avatar: '/avatar-5.png'
                 }
             ]
         }
