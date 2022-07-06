@@ -22,16 +22,18 @@
         </v-card-title>
 
         <v-card-text>
-            <v-form class="px-3">
+            <v-form class="px-3" ref="form">
               <v-text-field 
                 label="Title" 
                 v-model="title"
                 prepend-icon="folder"
+                :rules="inputRulesTitle"
               ></v-text-field>
               <v-textarea 
                 label="Information" 
                 v-model="content"
                 prepend-icon="edit"
+                :rules="inputRulesInfo"
               ></v-textarea> 
             <!-- datepicker -->
               <v-row>
@@ -54,6 +56,7 @@
                         v-bind="attrs"
                         v-on="on"
                         @click:clear="date = null"
+                        :rules="inputRulesDatefield"
                       ></v-text-field>
                     </template>
                     <v-date-picker
@@ -74,7 +77,7 @@
           <v-btn
             class="mb-5 mr-3"
             color="primary"            
-            @click="dialog = false, submit()"
+            @click="submit()"
           >
             Create
           </v-btn>
@@ -95,11 +98,29 @@ export default {
             content: '',
             date: format(parseISO(new Date().toISOString()), 'yyyy-MM-dd'),
             menu2: false,
+            inputRulesTitle: [
+              v => !!v || 'Title is required',
+              v => (v && v.length >= 3) || 'Title must be longer than 3 characters',
+            ],
+            inputRulesInfo: [
+              v => !!v || 'Information is required',
+              v => (v && v.length >= 3) || 'Information must be longer than 3 characters',
+            ],
+            inputRulesDatefield: [
+              v => !!v || 'Please pick a date',
+              // v => v !== null || 'Please pick a date', 
+            ]
         }
     },
     methods: {
       submit(){
-        console.log(this.title, this.content, this.date)
+        // this.$refs.form.validate()
+        if(this.$refs.form.validate()){
+          this.dialog = false,
+          console.log(this.title, this.content, this.date)
+          this.title = '',
+          this.content = ''
+        }
       },
     },
     computed: {
