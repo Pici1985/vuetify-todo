@@ -109,7 +109,7 @@ export default {
             inputRulesDatefield: [
               v => !!v || 'Please pick a date',
               // v => v !== null || 'Please pick a date', 
-            ]
+            ],
         }
     },
     methods: {
@@ -117,9 +117,9 @@ export default {
         // this.$refs.form.validate()
         if(this.$refs.form.validate()){
           this.dialog = false,
+          this.loading = true
           console.log(this.title, this.content, this.date)
-          this.title = '',
-          this.content = ''
+          this.$refs.form.reset()
         }
       },
     },
